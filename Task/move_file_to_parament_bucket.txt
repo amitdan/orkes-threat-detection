@@ -1,0 +1,24 @@
+{
+  "createTime": 1653239268802,
+  "createdBy": "",
+  "name": "move_file_to_parament_bucket",
+  "retryCount": 3,
+  "timeoutSeconds": 30,
+  "inputKeys": [
+    "s3FileName"
+  ],
+  "outputKeys": [
+    "status"
+  ],
+  "timeoutPolicy": "TIME_OUT_WF",
+  "retryLogic": "FIXED",
+  "retryDelaySeconds": 30,
+  "responseTimeoutSeconds": 30,
+  "concurrentExecLimit": 100,
+  "inputTemplate": {},
+  "rateLimitPerFrequency": 50,
+  "rateLimitFrequencyInSeconds": 30,
+  "ownerEmail": "amit.dandawate@gmail.com",
+  "pollTimeoutSeconds": 30,
+  "backoffScaleFactor": 1
+}

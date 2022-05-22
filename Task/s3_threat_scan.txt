@@ -1,0 +1,31 @@
+{
+  "createTime": 1653164748160,
+  "updateTime": 1653241282355,
+  "createdBy": "",
+  "updatedBy": "",
+  "name": "s3_threat_scan",
+  "retryCount": 3,
+  "timeoutSeconds": 30,
+  "inputKeys": [
+    "fileLocation",
+    "scanType",
+    "senderEmail"
+  ],
+  "outputKeys": [
+    "isThreatFound",
+    "s3FileName",
+    "scanType",
+    "senderEmail"
+  ],
+  "timeoutPolicy": "TIME_OUT_WF",
+  "retryLogic": "FIXED",
+  "retryDelaySeconds": 30,
+  "responseTimeoutSeconds": 30,
+  "concurrentExecLimit": 100,
+  "inputTemplate": {},
+  "rateLimitPerFrequency": 50,
+  "rateLimitFrequencyInSeconds": 30,
+  "ownerEmail": "amit.dandawate@gmail.com",
+  "pollTimeoutSeconds": 3000,
+  "backoffScaleFactor": 1
+}

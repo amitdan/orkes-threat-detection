@@ -1,0 +1,27 @@
+{
+  "createTime": 1653152442511,
+  "updateTime": 1653242741328,
+  "createdBy": "",
+  "updatedBy": "",
+  "name": "move_file_to_quarantine_bucket",
+  "retryCount": 3,
+  "timeoutSeconds": 30,
+  "inputKeys": [
+    "s3FileName"
+  ],
+  "outputKeys": [
+    "status",
+    "scanType"
+  ],
+  "timeoutPolicy": "TIME_OUT_WF",
+  "retryLogic": "FIXED",
+  "retryDelaySeconds": 30,
+  "responseTimeoutSeconds": 30,
+  "concurrentExecLimit": 100,
+  "inputTemplate": {},
+  "rateLimitPerFrequency": 50,
+  "rateLimitFrequencyInSeconds": 30,
+  "ownerEmail": "amit.dandawate@gmail.com",
+  "pollTimeoutSeconds": 30,
+  "backoffScaleFactor": 1
+}

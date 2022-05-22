@@ -1,0 +1,29 @@
+{
+  "createTime": 1653164936311,
+  "updateTime": 1653165008578,
+  "createdBy": "",
+  "updatedBy": "",
+  "name": "raise_incident",
+  "retryCount": 3,
+  "timeoutSeconds": 30,
+  "inputKeys": [
+    "s3FileName",
+    "source",
+    "senderEmail",
+    "isThreatFound"
+  ],
+  "outputKeys": [
+    "status"
+  ],
+  "timeoutPolicy": "TIME_OUT_WF",
+  "retryLogic": "FIXED",
+  "retryDelaySeconds": 30,
+  "responseTimeoutSeconds": 30,
+  "concurrentExecLimit": 100,
+  "inputTemplate": {},
+  "rateLimitPerFrequency": 50,
+  "rateLimitFrequencyInSeconds": 30,
+  "ownerEmail": "amit.dandawate@gmail.com",
+  "pollTimeoutSeconds": 30,
+  "backoffScaleFactor": 1
+}
