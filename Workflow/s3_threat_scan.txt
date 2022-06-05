@@ -1,8 +1,8 @@
 {
-  "updateTime": 1653242713941,
+  "updateTime": 1654440994986,
   "name": "s3_threat_scan",
   "description": "S3 Threat Scan",
-  "version": 3,
+  "version": 4,
   "tasks": [
     {
       "name": "s3_threat_scan",
@@ -37,8 +37,9 @@
             "taskReferenceName": "raise_incident",
             "inputParameters": {
               "s3FileName": "${s3_threat_scan_ref.output.s3FileName}",
-              "senderEmail": "${s3_threat_scan_ref.output.isThreatFound}",
-              "isThreatFound": "${s3_threat_scan_ref.output.isThreatFound}"
+              "senderEmail": "${s3_threat_scan_ref.output.senderEmail}",
+              "isThreatFound": "${s3_threat_scan_ref.output.isThreatFound}",
+              "scanType": "${s3_threat_scan_ref.output.scanType}"
             },
             "type": "SIMPLE",
             "decisionCases": {},
@@ -55,7 +56,8 @@
             "name": "move_file_to_quarantine_bucket",
             "taskReferenceName": "move_file_to_quarantine_bucket",
             "inputParameters": {
-              "s3FileName": "${s3_threat_scan_ref.output.s3FileName}"
+              "s3FileName": "${raise_incident.output.s3FileName}",
+              "scanType": "${raise_incident.output.scanType}"
             },
             "type": "SIMPLE",
             "decisionCases": {},
@@ -75,7 +77,8 @@
           "name": "move_file_to_parament_bucket",
           "taskReferenceName": "move_file_to_parament_bucket",
           "inputParameters": {
-            "s3FileName": "${s3_threat_scan_ref.output.s3FileName}"
+            "s3FileName": "${s3_threat_scan_ref.output.s3FileName}",
+            "scanType": "${s3_threat_scan_ref.output.scanType}"
           },
           "type": "SIMPLE",
           "decisionCases": {},
@@ -103,7 +106,7 @@
       "name": "reporting_back",
       "taskReferenceName": "reporting_back",
       "inputParameters": {
-        "scanType": "${move_file_to_quarantine_bucket.output.scanType}"
+        "scanType": "${s3_threat_scan_ref.output.scanType}"
       },
       "type": "SWITCH",
       "decisionCases": {
@@ -114,7 +117,7 @@
             "inputParameters": {
               "s3FileName": "${s3_threat_scan_ref.output.s3FileName}",
               "isThreatFound": "${s3_threat_scan_ref.output.isThreatFound}",
-              "scanType": "${s3_threat_scan_ref.output.scanType}",
+              "scanType": "${move_file_to_quarantine_bucket.output.scanType}",
               "senderEmail": "${s3_threat_scan_ref.output.senderEmail}"
             },
             "type": "SIMPLE",
@@ -159,7 +162,7 @@
       "asyncComplete": false,
       "loopOver": [],
       "evaluatorType": "value-param",
-      "expression": "isThreatFound"
+      "expression": "scanType"
     }
   ],
   "inputParameters": [],
